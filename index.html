@@ -8,7 +8,33 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <h1>LIFF Profile User</h1>
+    <img id="pictureUrl" alt="">
+    <p id=userId><b>userId</b></p>
+    <p id=displayName><b>displayName</b></p>
+    <p id=statusMessage><b>statusMessage</b></p>
+    <p id=userEmail><b>userEmail</b></p>
     
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script>
+        async function getUserProfile(){
+            const profile = await liff.getUserProfile()
+            document.getElementById("pictureUrl".src) = profile.pictureUrl
+            document.getElementById("userId".append(profile.userId)
+            document.getElementById("displayName".append(profile.displayName)
+            document.getElementById("statusMessage".append(profile.statusMessage)
+            document.getElementById("userEmail".append(liff.getDecodeIDToken().email)
+        }
+
+        async function main(){
+            await liff.init({ liffid: "1656655744-RwoN0wqA" })  // ใส่ init  LIFF ID
+            //ตรวจสอบเงื่อนไขการ login
+            if (liff.isLoggedIn()) {
+                getUserProfile() // ดึงโปรไฟล์
+
+            }
+        }
+    </script>
+    
 </body>
 </html>
