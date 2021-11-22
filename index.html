@@ -18,7 +18,7 @@
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
         async function getUserProfile(){
-            const profile = await liff.getUserProfile()
+            const profile = await liff.getProfile()
             document.getElementById("pictureUrl".src) = profile.pictureUrl
             document.getElementById("userId").append(profile.userId)
             document.getElementById("displayName").append(profile.displayName)
