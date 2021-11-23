@@ -14,9 +14,12 @@
     <p id="displayName"><b>displayName</b></p>
     <p id="statusMessage"><b>statusMessage</b></p>
     <p id="userEmail"><b>userEmail</b></p>
+  
+    <button id="btnMsg" onclick="sendMsg()"> Send Message </button>
     
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
+        // ฟังก์ชั่น ดึงข้อมูล profile ผู้ใช้
         async function getUserProfile(){
             const profile = await liff.getProfile()
             document.getElementById("pictureUrl").src = profile.pictureUrl
@@ -26,6 +29,24 @@
             document.getElementById("userEmail").append(liff.getDecodedIDToken().email)
         }
 
+        // ฟังก์ชั่น ส่งข้อความเข้าห้องแชท
+        async function sendMsg(){
+            //เช็คว่าเปิด LIFF ใน Line App หรือไม่
+            if(liff.getContex(.type !== "none"){
+                await liff.sendMessages([
+                    //ส่งสติกเกอร์
+                    {
+                        "type": "sticker",
+                        "stickerID": 3,
+                        "packageID": 1
+                    }
+                ])
+                alert("Message Send")
+            }
+            
+        }
+
+/////////////////////////////////////////////////
         async function main(){
             await liff.init({ liffId: "1656655744-RwoN0wqA" })  // ใส่ init  LIFF ID
             //ตรวจสอบเงื่อนไขการ login
