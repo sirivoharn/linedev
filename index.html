@@ -30,15 +30,15 @@
         }
 
         // ฟังก์ชั่น ส่งข้อความเข้าห้องแชท
-        async function sendMsg(){
+        async function sendMsg() {
             //เช็คว่าเปิด LIFF ใน Line App หรือไม่
             if(liff.getContext().type !== "none"){
                 await liff.sendMessages([
                     //ส่งสติกเกอร์
                     {
-                        "type": "sticker",
-                        "stickerID": 3,
-                        "packageID": 1
+                        "type":"sticker",
+                        "stickerID":3,
+                        "packageID":1
                     }
                 ])
                 alert("Message Send")
