@@ -34,8 +34,8 @@
 
         }
         // สร้างฟังก์ชั่นอ่าน Context
-        function getContext(){
-            document.getElementById("type").append(liff.getContext)
+        async function getContext(){
+            document.getElementById("type").append(liff.getContext().type)
         }
 
 
@@ -47,8 +47,8 @@
                     //ส่งสติกเกอร์
                     {
                         "type":"sticker",
-                        "stickerId":"4",
-                        "packageId":"1"
+                        "stickerId":4,
+                        "packageId":1
                     },
                 ])
                 alert("Message Send")
