@@ -32,7 +32,7 @@
         // ฟังก์ชั่น ส่งข้อความเข้าห้องแชท
         async function sendMsg(){
             //เช็คว่าเปิด LIFF ใน Line App หรือไม่
-            if(liff.getContex(.type !== "none"){
+            if(liff.getContext().type !== "none"){
                 await liff.sendMessages([
                     //ส่งสติกเกอร์
                     {
