@@ -16,8 +16,12 @@
 	<p id="userEmail"><b>userEmail:</b></p>
 
 	<p id="type"><b>Type:</b></p>
+
+	<p id="scanCode"><b>Code:</b></p>
   
 	<button id="btnMsg" onclick="sendMsg()"> Send Message </button>
+	<button id="btnScanCode" onclick="scanCode()"> Scan Code </button>
+
 	
 	<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 	<script>
@@ -68,6 +72,28 @@
 				alert("Message sent")
 			}
 		}
+		async function scanCode(){
+            const result = await liff.scanCodeV2()
+            document.getElementById("scanCode").append(result.value)
+
+            // ส่ง Code ที่ได้เข้าห้อง Chat
+            if (liff.getContext().type !== "none") {
+                await liff.sendMessages([
+                    {
+                        "type":"text",
+                        "text": "Code: "+ result.value
+                    },
+                ])
+            }
+
+            // เปิดไปหน้าเว็บตามลิ้งก์ที่ได้
+            liff.openWindow({
+                url: result.value,
+                // external: true // เปิดไปที่เว็บภายนอก
+                external: false // เปิดอยู่ภายในแอพไลน์
+            })
+            liff.closeWindow()
+        }
 
 /////////////////////////////////////////////////
 		async function main(){
