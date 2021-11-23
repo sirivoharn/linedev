@@ -8,17 +8,21 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>LIFF Profile User1</h1>
+    <h1>LIFF Profile User2</h1>
     <img id="pictureUrl">
     <p id="userId"><b>userId</b></p>
     <p id="displayName"><b>displayName</b></p>
     <p id="statusMessage"><b>statusMessage</b></p>
     <p id="userEmail"><b>userEmail</b></p>
+
+    <p id="type"><b> type: </b></p>
   
     <button id="btnMsg" onclick="sendMsg()"> Send Message </button>
     
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
+   
+
         // ฟังก์ชั่น ดึงข้อมูล profile ผู้ใช้
         async function getUserProfile(){
             const profile = await liff.getProfile()
@@ -27,7 +31,13 @@
             document.getElementById("displayName").append(profile.displayName)
             document.getElementById("statusMessage").append(profile.statusMessage)
             document.getElementById("userEmail").append(liff.getDecodedIDToken().email)
+
         }
+        // สร้างฟังก์ชั่นอ่าน Context
+        function getContext(){
+            document.getElementById("type").append(liff.getContext)
+        }
+
 
         // ฟังก์ชั่น ส่งข้อความเข้าห้องแชท
         async function sendMsg() {
@@ -37,8 +47,8 @@
                     //ส่งสติกเกอร์
                     {
                         "type":"sticker",
-                        "stickerID":3,
-                        "packageId":1
+                        "stickerID":"4",
+                        "packageId":"1"
                     },
                 ])
                 alert("Message Send")
@@ -52,6 +62,7 @@
             //ตรวจสอบเงื่อนไขการ login
             if (liff.isLoggedIn()) {
                 getUserProfile() // ดึงโปรไฟล์
+                getContext() // ตรวจสอบ Context
 
             }
         }
