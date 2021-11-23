@@ -21,6 +21,7 @@
   
 	<button id="btnMsg" onclick="sendMsg()"> Send Message </button>
 	<button id="btnScanCode" onclick="scanCode()"> Scan Code </button>
+	<button  onclick="openWindow()"> Open Windows </button>
 
 	
 	<script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
@@ -94,6 +95,13 @@
             })
             liff.closeWindow()
         }
+
+		function openWindow(){
+			liff.openWindow({
+				url:"http://line.me",
+				external:true // เปิดเว็บภายนอก
+			})
+		}
 
 /////////////////////////////////////////////////
 		async function main(){
