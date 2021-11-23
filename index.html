@@ -15,7 +15,7 @@
     <p id="statusMessage"><b>statusMessage:</b></p>
     <p id="userEmail"><b>userEmail:</b></p>
 
-    <p id="type"><b> type: </b></p>
+    <p id="type"><b>Type:</b></p>
   
     <button id="btnMsg" onclick="sendMsg()"> Send Message </button>
     
@@ -33,7 +33,7 @@
             document.getElementById("userEmail").append(liff.getDecodedIDToken().email)
 
         }
-        // สร้างฟังก์ชั่นอ่าน Context
+        // สร้างฟังก์ชั่นอ่าน Context สำหรับตรวจสอบ tpye
         async function getContext(){
             document.getElementById("type").append(liff.getContext().type)
         }
