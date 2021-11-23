@@ -71,6 +71,7 @@
 					}
 				])
 				alert("Message sent")
+				liff.closeWindow()
 			}
 		}
 		async function scanCode(){
@@ -82,7 +83,7 @@
                 await liff.sendMessages([
                     {
                         "type":"text",
-                        "text": "Code: "+ result.value
+                        "text": "Code: "+ result.value  // ส่งเข้าห้องแชท
                     },
                 ])
             }
@@ -99,7 +100,7 @@
 		function openWindow(){
 			liff.openWindow({
 				url:"http://line.me",
-				external:true // เปิดเว็บภายนอก
+				external:true // เปิดเว็บภายนอก หรือ pdf
 			})
 		}
 
