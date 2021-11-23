@@ -41,19 +41,33 @@
 
         // ฟังก์ชั่น ส่งข้อความเข้าห้องแชท
         async function sendMsg() {
-            //เช็คว่าเปิด LIFF ใน Line App หรือไม่
-            if(liff.getContext().type !== "none"){
+            if (liff.getContext().type !== "none") { // check ว่าอยุ่ในห้องแชท
                 await liff.sendMessages([
-                    //ส่งสติกเกอร์
                     {
-                        "type":"sticker",
-                        "stickerId":8,
-                        "packageId":1
+                        "type": "sticker",
+                        "stickerId": 4,
+                        "packageId": 1
                     },
+                    {
+                        "type":"text",
+                        "text": "This is my message"
+                    },
+                    {
+                        "type": "location",
+                        "title": "my location",
+                        "address": "1-6-1 Yotsuya, Shinjuku-ku, Tokyo, 160-0004, Japan", 
+                        "latitude": 35.687574,
+                        "longitude": 139.72922
+                    },
+                    {
+                        "type": "image",
+                        "originalContentUrl": "https://www.itgenius.co.th/assets/frondend/images/picturecourseshare/Basic_Docker_2021_Share.jpg",
+                        "previewImageUrl": "https://www.itgenius.co.th/assets/frondend/images/picturecourse/Basic_Docker_2021_cover.jpg"
+                    }
                 ])
-                alert("Message Send")
+                alert("Message sent")
+                liff.closeWindow()
             }
-            
         }
 
 /////////////////////////////////////////////////
